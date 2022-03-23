@@ -8,6 +8,10 @@ class game {
     this.guntingComp = document.querySelector('.comptGunting');
     this.veersus = document.querySelector('.vs');
     this.refresh = document.querySelector('.refresh');
+    this.scorePlayer = document.querySelector('.scorePlayerUpdate');
+    this.scoreComp = document.querySelector('.scoreCompUpdate');
+    this.playerScore = 0;
+    this.computerScore = 0;
     this.pilihan = '';
     this.pilihanComputer = '';
     this.hasil = '';
@@ -16,12 +20,13 @@ class game {
     this.batuPlay();
     this.kertasPlay();
     this.guntingPlay();
-
     this.refreshGame();
+    this.updateScore();
   }
   refreshGame() {
     this.refresh.addEventListener('click', () => {
       this.hapusStyle();
+      this.resetScore();
     });
   }
   batuPlay() {
@@ -62,6 +67,8 @@ class game {
     this.competerMilih();
     this.kondisiMenang();
     this.menangAtauKalah();
+    this.updateScore();
+    console.log(this.playerScore, this.computerScore);
   }
 
   competerMilih() {
@@ -158,7 +165,38 @@ class game {
     this.veersus.style.color = null;
     this.veersus.style.transform = null;
   }
+  resetScore() {
+    this.playerScore = 0;
+    this.computerScore = 0;
+    this.scorePlayer.textContent = 0;
+    this.scoreComp.textContent = 0;
+  }
+  updateScore() {
+    if (this.hasil === 'menang') {
+      const hasilScore = this.playerScore + 1;
+      this.playerScore = hasilScore;
+      this.scorePlayer.textContent = this.playerScore;
+    } else if (this.hasil === 'kalah') {
+      const hasilScore = this.computerScore + 1;
+      this.computerScore = hasilScore;
+      this.scoreComp.textContent = this.computerScore;
+    }
+    this.alertMenang();
+  }
+  alertMenang() {
+    const playerMenang = this.playerScore === 1 ? true : false;
+    const komputerMenang = this.computerScore === 1 ? true : false;
+    if (playerMenang) {
+      alert('kamu menang');
+      this.resetScore();
+      this.hapusStyle();
+    } else if (komputerMenang) {
+      alert('kamu kalah');
+      this.resetScore();
+      this.hapusStyle();
+    }
+  }
 }
-class mulaiMain {}
+
 const saya = new game();
 saya.playGame();

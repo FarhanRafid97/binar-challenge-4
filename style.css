@@ -133,3 +133,37 @@ body {
   transform: rotate(15deg);
   transition: 0.5s;
 }
+.games {
+  position: relative;
+}
+
+.scorePlayer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 225px;
+  left: 80px;
+  margin: auto 0;
+}
+.scorePlayer h3 {
+  font-size: 24px;
+}
+.scorePlayer div {
+  font-size: 24px;
+}
+.scoreComp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 225px;
+  right: 80px;
+  margin: auto 0;
+}
+.scoreComp h3 {
+  font-size: 24px;
+}
+.scoreComp div {
+  font-size: 24px;
+}
