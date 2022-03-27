@@ -67,12 +67,16 @@ body {
   padding: 0 60px;
   align-items: center;
 }
-.kertas-section p {
-  font-size: 48px;
+.vs {
+  width: 160px;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: auto;
+  font-size: 144px;
   font-weight: 700;
   letter-spacing: 0.1rem;
   color: #bd0000;
-  padding: 15px 55px;
   border-radius: 15px;
 }
 .kertas-section img {
@@ -160,4 +164,12 @@ body {
 }
 .scoreComp div {
   font-size: 24px;
+}
+
+.versus {
+  width: 271px;
+  height: 167px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

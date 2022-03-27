@@ -13,6 +13,7 @@ class game {
     this.refresh = document.querySelector('.refresh');
     this.scorePlayer = document.querySelector('.scorePlayerUpdate');
     this.scoreComp = document.querySelector('.scoreCompUpdate');
+    this.versusBackground = document.querySelector('.versus');
     this.playerScore = 0;
     this.computerScore = 0;
     this.pilihan = '';
@@ -106,20 +107,23 @@ class game {
   ubahVersus() {}
   menangAtauKalah() {
     if (this.hasil === 'menang') {
-      this.veersus.textContent = 'menang';
-      this.veersus.style.backgroundColor = '#4C9654';
+      this.veersus.textContent = 'Player 1 WIN';
+      this.versusBackground.style.backgroundColor = '#4C9654';
       this.veersus.style.color = 'white';
-      this.veersus.style.transform = 'rotate(-40deg)';
+      this.versusBackground.style.transform = 'rotate(-40deg)';
+      this.veersus.style.fontSize = '38px';
     } else if (this.hasil === 'kalah') {
-      this.veersus.textContent = 'kalah';
-      this.veersus.style.backgroundColor = 'red';
+      this.veersus.textContent = 'COM WIN';
+      this.versusBackground.style.backgroundColor = '#4C9654';
       this.veersus.style.color = 'white';
-      this.veersus.style.transform = 'rotate(40deg)';
+      this.versusBackground.style.transform = 'rotate(40deg)';
+      this.veersus.style.fontSize = '38px';
     } else {
       this.veersus.textContent = 'draw';
-      this.veersus.style.backgroundColor = '#035B0C';
+      this.versusBackground.style.backgroundColor = '#035B0C';
       this.veersus.style.color = 'white';
-      this.veersus.style.transform = 'rotate(0deg)';
+      this.versusBackground.style.transform = 'rotate(0deg)';
+      this.veersus.style.fontSize = '38px';
     }
   }
   pilihStyle() {
@@ -164,9 +168,10 @@ class game {
     this.kertasComp.style.backgroundColor = null;
     this.guntingComp.style.backgroundColor = null;
     this.veersus.textContent = 'VS';
-    this.veersus.style.backgroundColor = null;
+    this.versusBackground.style.backgroundColor = null;
     this.veersus.style.color = null;
-    this.veersus.style.transform = null;
+    this.versusBackground.style.transform = null;
+    this.veersus.style.fontSize = '144px';
   }
   resetScore() {
     this.playerScore = 0;
