@@ -1,8 +1,11 @@
 class game {
   constructor() {
-    this.batuSaya = document.querySelector('.playerBatu');
-    this.kertasSaya = document.querySelector('.playerKertas');
-    this.guntingSaya = document.querySelector('.playerGunting');
+    this.batuSaya = document.querySelector('.batuSaya');
+    this.kertasSaya = document.querySelector('.kertasSaya');
+    this.guntingSaya = document.querySelector('.guntingSaya');
+    this.bgBatuSaya = document.querySelector('.playerBatu');
+    this.bgKertasSaya = document.querySelector('.playerKertas');
+    this.bgGuntingSaya = document.querySelector('.playerGunting');
     this.batuComp = document.querySelector('.compBatu');
     this.kertasComp = document.querySelector('.compKertas');
     this.guntingComp = document.querySelector('.comptGunting');
@@ -37,7 +40,7 @@ class game {
       setTimeout(() => {
         this.alurGame();
         this.pilihStyle();
-      }, 1000);
+      }, 500);
     });
   }
   kertasPlay() {
@@ -48,7 +51,7 @@ class game {
       setTimeout(() => {
         this.alurGame();
         this.pilihStyle();
-      }, 1000);
+      }, 500);
     });
   }
   guntingPlay() {
@@ -60,7 +63,7 @@ class game {
       setTimeout(() => {
         this.alurGame();
         this.pilihStyle();
-      }, 700);
+      }, 500);
     });
   }
   alurGame() {
@@ -114,7 +117,7 @@ class game {
       this.veersus.style.transform = 'rotate(40deg)';
     } else {
       this.veersus.textContent = 'draw';
-      this.veersus.style.backgroundColor = '#4C9654';
+      this.veersus.style.backgroundColor = '#035B0C';
       this.veersus.style.color = 'white';
       this.veersus.style.transform = 'rotate(0deg)';
     }
@@ -140,23 +143,23 @@ class game {
   }
   playerPilihStyle() {
     if (this.pilihan === 'batu') {
-      this.batuSaya.style.backgroundColor = '#C4C4Ce';
-      this.kertasSaya.style.backgroundColor = null;
-      this.guntingSaya.style.backgroundColor = null;
+      this.bgBatuSaya.style.backgroundColor = '#C4C4Ce';
+      this.bgKertasSaya.style.backgroundColor = null;
+      this.bgGuntingSaya.style.backgroundColor = null;
     } else if (this.pilihan === 'kertas') {
-      this.batuSaya.style.backgroundColor = null;
-      this.kertasSaya.style.backgroundColor = '#C4C4Ce';
-      this.guntingSaya.style.backgroundColor = null;
+      this.bgBatuSaya.style.backgroundColor = null;
+      this.bgKertasSaya.style.backgroundColor = '#C4C4Ce';
+      this.bgGuntingSaya.style.backgroundColor = null;
     } else if (this.pilihan === 'gunting') {
-      this.batuSaya.style.backgroundColor = null;
-      this.kertasSaya.style.backgroundColor = null;
-      this.guntingSaya.style.backgroundColor = '#C4C4Ce';
+      this.bgBatuSaya.style.backgroundColor = null;
+      this.bgKertasSaya.style.backgroundColor = null;
+      this.bgGuntingSaya.style.backgroundColor = '#C4C4Ce';
     }
   }
   hapusStyle() {
-    this.batuSaya.style.backgroundColor = null;
-    this.kertasSaya.style.backgroundColor = null;
-    this.guntingSaya.style.backgroundColor = null;
+    this.bgBatuSaya.style.backgroundColor = null;
+    this.bgKertasSaya.style.backgroundColor = null;
+    this.bgGuntingSaya.style.backgroundColor = null;
     this.batuComp.style.backgroundColor = null;
     this.kertasComp.style.backgroundColor = null;
     this.guntingComp.style.backgroundColor = null;
@@ -172,28 +175,32 @@ class game {
     this.scoreComp.textContent = 0;
   }
   updateScore() {
-    if (this.hasil === 'menang') {
-      const hasilScore = this.playerScore + 1;
-      this.playerScore = hasilScore;
-      this.scorePlayer.textContent = this.playerScore;
-    } else if (this.hasil === 'kalah') {
-      const hasilScore = this.computerScore + 1;
-      this.computerScore = hasilScore;
-      this.scoreComp.textContent = this.computerScore;
-    }
-    this.alertMenang();
+    setTimeout(() => {
+      if (this.hasil === 'menang') {
+        const hasilScore = this.playerScore + 1;
+        this.playerScore = hasilScore;
+        this.scorePlayer.textContent = this.playerScore;
+      } else if (this.hasil === 'kalah') {
+        const hasilScore = this.computerScore + 1;
+        this.computerScore = hasilScore;
+        this.scoreComp.textContent = this.computerScore;
+      }
+    }, 100);
+    setTimeout(() => {
+      this.alertMenang();
+    }, 200);
   }
   alertMenang() {
-    const playerMenang = this.playerScore === 1 ? true : false;
-    const komputerMenang = this.computerScore === 1 ? true : false;
+    const playerMenang = this.playerScore === 5 ? true : false;
+    const komputerMenang = this.computerScore === 5 ? true : false;
     if (playerMenang) {
       alert('kamu menang');
       this.resetScore();
       this.hapusStyle();
     } else if (komputerMenang) {
       alert('kamu kalah');
-      this.resetScore();
       this.hapusStyle();
+      this.resetScore();
     }
   }
 }
